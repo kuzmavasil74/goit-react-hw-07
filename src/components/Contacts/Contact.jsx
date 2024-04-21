@@ -1,5 +1,11 @@
+import { useDispatch } from 'react-redux'
+import { deleteContact } from '../../redux/contactsOps'
 import css from './Contact.module.css'
-const Contact = ({ contact, onDeleteContact }) => {
+const Contact = ({ contact }) => {
+  const dispatch = useDispatch()
+  const handleDeleteContact = (id) => {
+    dispatch(deleteContact(id))
+  }
   if (!contact || !contact.favColor) {
     return <div>Loading contact details...</div>
   }
@@ -18,7 +24,9 @@ const Contact = ({ contact, onDeleteContact }) => {
       </ul>
       <button
         type="button"
-        onClick={() => onDeleteContact(contact.id)}
+        onClick={() => {
+          return handleDeleteContact(contact.id)
+        }}
         className={css.contactListBtn}
         aria-label={`Delete ${contact.name}`}
       >
