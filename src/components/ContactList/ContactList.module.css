@@ -1,8 +1,15 @@
 .contactListMainContainer {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  width: 250px;
   gap: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1.5px solid rgba(6, 44, 237, 0.652);
+  border-radius: 10px;
 }
 .contactCart {
   display: flex;

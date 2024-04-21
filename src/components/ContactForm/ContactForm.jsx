@@ -7,6 +7,9 @@ import {
   min_name_length,
   min_number_length,
 } from '../../utils/constants'
+import { addContact } from '../../redux/contactsOps'
+import { useDispatch } from 'react-redux'
+import { nanoid } from 'nanoid'
 
 const contactFormSchema = Yup.object({
   name: Yup.string()
@@ -37,7 +40,16 @@ const form_Initial_Values = {
   number: '',
   favColor: '',
 }
-const ContactForm = ({ onAddContact }) => {
+const ContactForm = () => {
+  const dispatch = useDispatch()
+  const onAddContact = (formData) => {
+    const finalContact = {
+      ...formData,
+      id: nanoid(),
+    }
+    const action = addContact(finalContact)
+    dispatch(action)
+  }
   const handleSubmitEvent = (values, actions) => {
     onAddContact(values)
     actions.resetForm()
